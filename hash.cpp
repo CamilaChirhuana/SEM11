@@ -13,25 +13,7 @@ int hashF(string dni)
     return acum % TAM_HASH;
 }
 
-void recorrerHash(Nodo **T) 
-{
-    for (int i = 0; i < TAM_HASH; i++) 
-    {
-        cout << "Indice " << i << ": ";
-        Nodo *temp = T[i];
-        while (temp != nullptr) 
-        {
-            cout << "[" << temp->get_DNI() << ", " << temp->get_nombre() << " " << temp->get_apellido() << ", Edad: " << temp->get_edad() << "] -> ";
-            temp = temp->get_sig();
-        }
-        cout << "NULL\n";
-    }
-}
 
-void reportarHash(Nodo **T) 
-{
-    recorrerHash(T);
-}
 
 int main() 
 {
