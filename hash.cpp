@@ -33,13 +33,12 @@ void agregarElemento(Nodo** TablaHash, int edad, string DNI, string nombre, stri
 
 void modificarElemento(Nodo **TablaHash, string dni, int nuevaEdad, string nuevoNombre, string nuevoApellido) 
 {
-    int index = hashF(dni); // Get index based on DNI
+    int index = hashF(dni); 
     Nodo *current = TablaHash[index];
      while (current != nullptr) 
     {
         if (current->get_DNI() == dni) 
         {
-            // Modify the fields
             current->set_edad(nuevaEdad);
             current->set_nombre(nuevoNombre);
             current->set_apellido(nuevoApellido);
