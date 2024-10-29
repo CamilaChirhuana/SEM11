@@ -13,7 +13,12 @@ int hashF(string dni)
     return acum % TAM_HASH;
 }
 
-
+void agregarElemento(Nodo** TablaHash, int edad, string DNI, string nombre, string apellido) {
+    int i = hashF(DNI);
+    Nodo* nodo = new Nodo(edad, DNI, nombre, apellido);
+    nodo->set_sig(TablaHash[i]);
+    TablaHash[i] = nodo;
+}
 
 int main() 
 {
