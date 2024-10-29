@@ -1,7 +1,44 @@
-int main() {
-    Nodo *TablaHash = new Nodo[TAM_HASH];
-    for (int i = 0; i < TAM_HASH; i++) {
-        TablaHash[i] = nullptr;
+#include<iostream>
+#include "nodoLista.h"
+using namespace std;
+
+int TAM_HASH = 20;
+
+int hashF(string dni) 
+{
+    long acum = 0;
+    for (char c : dni) {
+        acum = acum * 31 + (c - '0');
+    }
+    return acum % TAM_HASH;
+}
+
+void recorrerHash(Nodo **T) 
+{
+    for (int i = 0; i < TAM_HASH; i++) 
+    {
+        cout << "Indice " << i << ": ";
+        Nodo *temp = T[i];
+        while (temp != nullptr) 
+        {
+            cout << "[" << temp->get_DNI() << ", " << temp->get_nombre() << " " << temp->get_apellido() << ", Edad: " << temp->get_edad() << "] -> ";
+            temp = temp->get_sig();
+        }
+        cout << "NULL\n";
+    }
+}
+
+void reportarHash(Nodo **T) 
+{
+    recorrerHash(T);
+}
+
+int main() 
+{
+    Nodo **TablaHash = new Nodo*[TAM_HASH];
+    for (int i = 0; i < TAM_HASH; i++) 
+    {
+        TablaHash[i] = NULL;
     }
 
     int opcion, edad, indice;
@@ -15,11 +52,11 @@ int main() {
         cout << "3. Modificar Elemento\n";
         cout << "4. Eliminar Elemento\n";
         cout << "5. Reportar Hash Completo\n";
-        cout << "6. Imprimir un Indice\n";
+        //cout << "6. Imprimir un Indice\n";
         cout << "7. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
-
+        system("cls");
         switch(opcion)
         {
             case 1:
