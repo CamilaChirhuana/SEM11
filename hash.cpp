@@ -86,7 +86,7 @@ int main()
         TablaHash[i] = NULL;
     }
 
-    int opcion, edad, indice;
+    int opcion, edad;
     string dni, nombre, apellido;
 
     do 
