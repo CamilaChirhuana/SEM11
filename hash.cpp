@@ -97,8 +97,7 @@ int main()
         cout << "3. Modificar persona\n";
         cout << "4. Eliminar persona\n";
         cout << "5. Reportar Hash Completo\n";
-        cout << "6. Imprimir un Indice\n";
-        cout << "7. Salir\n";
+        cout << "6. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
         system("cls");
@@ -142,11 +141,6 @@ int main()
                 break;
 
             case 6:
-                cout << "Ingrese el indice que desea imprimir: "; cin >> indice;
-                imprimirIndice(TablaHash, indice);
-                break;
-
-            case 7:
                 cout << "Saliendo...\n";
                 break;
 
@@ -154,7 +148,7 @@ int main()
                 cout << "Opcion no valida.\n";
                 break;
         }
-    } while (opcion != 7);
+    } while (opcion != 6);
 
     
     for (int i = 0; i < TAM_HASH; i++) 
