@@ -47,12 +47,12 @@ int main()
     do 
     {
         cout << "\n\tMENU\t\n";
-        cout << "1. Agregar Elemento\n";
-        cout << "2. Buscar Elemento\n";
-        cout << "3. Modificar Elemento\n";
-        cout << "4. Eliminar Elemento\n";
+        cout << "1. Agregar persona\n";
+        cout << "2. Buscar persona\n";
+        cout << "3. Modificar persona\n";
+        cout << "4. Eliminar persona\n";
         cout << "5. Reportar Hash Completo\n";
-        //cout << "6. Imprimir un Indice\n";
+        cout << "6. Imprimir un Indice\n";
         cout << "7. Salir\n";
         cout << "Seleccione una opcion: ";
         cin >> opcion;
@@ -71,11 +71,11 @@ int main()
                 cout << "Ingrese DNI a buscar: "; cin >> dni;
                 if (Nodo *resultado = buscarElemento(TablaHash, dni)) 
                 {
-                    cout << "Elemento encontrado: " << resultado->get_DNI() << ", " << resultado->get_nombre() << " " << resultado->get_apellido() << ", Edad: " << resultado->get_edad() << "\n";
+                    cout << "Persona encontrada: " << resultado->get_DNI() << ", " << resultado->get_nombre() << " " << resultado->get_apellido() << ", Edad: " << resultado->get_edad() << "\n";
                 } 
                 else 
                 {
-                    cout << "Elemento no encontrado.\n";
+                    cout << "Persona no encontrada.\n";
                 }
                 break;
 
