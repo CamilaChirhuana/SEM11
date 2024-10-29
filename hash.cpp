@@ -12,6 +12,40 @@ int hashF(string dni)
     }
     return acum % TAM_HASH;
 }
+
+void agregarElemento(Nodo** TablaHash, int edad, string DNI, string nombre, string apellido) 
+{
+    int i = hashF(DNI);
+    Nodo* nodo = new Nodo(edad, DNI, nombre, apellido);
+    nodo->set_sig(TablaHash[i]);
+    TablaHash[i] = nodo;
+}
+
+void eliminarElemento(Nodo **T, string dni) 
+{
+    int indice = hashF(dni);
+    Nodo *aux = T[indice];
+    Nodo *prev = NULL;
+
+    while (aux != NULL && aux->get_DNI() != dni) {
+        prev = aux;
+        aux = aux->get_sig();
+    }
+
+    if (aux == NULL) {
+        cout << "Persona no encontrada.\n";
+        return;
+    }
+
+    if (prev == NULL) {
+        T[indice] = aux->get_sig();
+    } else {
+        prev->set_sig(aux->get_sig());
+    }
+    delete aux;
+    cout << "Persona eliminada.\n";
+}
+
 void reportarHash(Nodo** TablaHash) {
     for (int i = 0; i < TAM_HASH; i++) {
         cout << "Índice " << i << ": ";
@@ -23,12 +57,6 @@ void reportarHash(Nodo** TablaHash) {
         }
         cout << "NULL" << endl;
     }
-}
-void agregarElemento(Nodo** TablaHash, int edad, string DNI, string nombre, string apellido) {
-    int i = hashF(DNI);
-    Nodo* nodo = new Nodo(edad, DNI, nombre, apellido);
-    nodo->set_sig(TablaHash[i]);
-    TablaHash[i] = nodo;
 }
 
 void modificarElemento(Nodo **TablaHash, string dni, int nuevaEdad, string nuevoNombre, string nuevoApellido) 
