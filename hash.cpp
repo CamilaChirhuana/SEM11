@@ -12,7 +12,18 @@ int hashF(string dni)
     }
     return acum % TAM_HASH;
 }
-
+void reportarHash(Nodo** TablaHash) {
+    for (int i = 0; i < TAM_HASH; i++) {
+        cout << "Índice " << i << ": ";
+        Nodo* actual = TablaHash[i];
+        while (actual != nullptr) {
+      
+            cout << "[" << actual->get_DNI() << ", " << actual->get_nombre() << " " << actual->get_apellido() << ", Edad: " << actual->get_edad() << "] -> ";
+            actual = actual->get_sig();
+        }
+        cout << "NULL" << endl;
+    }
+}
 void agregarElemento(Nodo** TablaHash, int edad, string DNI, string nombre, string apellido) {
     int i = hashF(DNI);
     Nodo* nodo = new Nodo(edad, DNI, nombre, apellido);
