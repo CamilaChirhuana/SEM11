@@ -88,6 +88,7 @@ Nodo* buscarElemento(Nodo **T, string dni) {
     }
     return NULL;
 }
+
 int main() 
 {
     Nodo **TablaHash = new Nodo*[TAM_HASH];
