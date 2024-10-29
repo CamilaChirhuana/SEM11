@@ -77,7 +77,17 @@ void modificarElemento(Nodo **TablaHash, string dni, int nuevaEdad, string nuevo
     }
     cout << "Persona no encontrada en la tabla hash.\n";
 }
-
+Nodo* buscarElemento(Nodo **T, string dni) {
+    int indice = hashF(dni);
+    Nodo *aux = T[indice];
+    while (aux != NULL) {
+        if (aux->get_DNI() == dni) {
+            return aux;
+        }
+        aux = aux->get_sig();
+    }
+    return NULL;
+}
 int main() 
 {
     Nodo **TablaHash = new Nodo*[TAM_HASH];
