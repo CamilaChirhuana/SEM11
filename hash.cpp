@@ -31,6 +31,26 @@ void agregarElemento(Nodo** TablaHash, int edad, string DNI, string nombre, stri
     TablaHash[i] = nodo;
 }
 
+void modificarElemento(Nodo **TablaHash, string dni, int nuevaEdad, string nuevoNombre, string nuevoApellido) 
+{
+    int index = hashF(dni); // Get index based on DNI
+    Nodo *current = TablaHash[index];
+     while (current != nullptr) 
+    {
+        if (current->get_DNI() == dni) 
+        {
+            // Modify the fields
+            current->set_edad(nuevaEdad);
+            current->set_nombre(nuevoNombre);
+            current->set_apellido(nuevoApellido);
+            cout << "Modificación exitosa.\n";
+            return;
+        }
+        current = current->get_sig();
+    }
+    cout << "Persona no encontrada en la tabla hash.\n";
+}
+
 int main() 
 {
     Nodo **TablaHash = new Nodo*[TAM_HASH];
